@@ -13,7 +13,7 @@ class ReportChooseRadio extends StatefulWidget {
 }
 
 class _ReportChooseRadioState extends State<ReportChooseRadio> {
-  String? _character;
+  String? choosedValue;
 
   List<String> reportOptions = [
     AppStrings.reportOption1,
@@ -30,41 +30,24 @@ class _ReportChooseRadioState extends State<ReportChooseRadio> {
     return Column(
       children: reportOptions.map((rOption) {
         return RadioListTile<String>(
+          activeColor: AppColor.badgeColor,
           title: Text(
             rOption,
             style: const TextStyle(
-              fontSize: 16.0,
+              fontSize: 14.0,
               fontWeight: FontWeight.w500,
               fontFamily: "Poppins",
             ),
-          ), // Use Text widget to display the option
+          ),
           value: rOption,
-          groupValue: _character,
+          groupValue: choosedValue,
           onChanged: (String? value) {
             setState(() {
-              _character = value;
-              Navigator.pop(context);
-              showReportSnackBar();
+              choosedValue = value;
             });
           },
         );
       }).toList(),
-    );
-  }
-
-  showReportSnackBar() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text(
-          AppStrings.reportResultText,
-          style: TextStyle(color: AppColor.bgCard),
-        ),
-        duration: const Duration(seconds: 3),
-        action: SnackBarAction(
-            label: AppStrings.cancelBtnText,
-            textColor: AppColor.badgeColor,
-            onPressed: () => Navigator.pop(context)),
-      ),
     );
   }
 }

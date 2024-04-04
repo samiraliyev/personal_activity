@@ -49,7 +49,7 @@ class CardItems extends StatelessWidget {
       isScrollControlled: true,
       elevation: 1.0,
       constraints: BoxConstraints.expand(
-          height: MediaQuery.of(context).size.height * 0.65),
+          height: MediaQuery.of(context).size.height * 0.7),
       context: context,
       builder: (context) {
         return Padding(
@@ -370,10 +370,10 @@ class CardItems extends StatelessWidget {
                       child: GlobalButton(
                         color: AppColor.badgeColor,
                         textColor: AppColor.bgCard,
-                        text: AppStrings.confirmBlokBtnText,
+                        text: AppStrings.confirmBtnText,
                         onPressed: () {
                           Navigator.pop(context);
-                          showSnackBarForNotificaation(context);
+                          showSnackBarForBlockingUser(context);
                         },
                       ),
                     ),
@@ -387,7 +387,7 @@ class CardItems extends StatelessWidget {
     );
   }
 
-  showSnackBarForNotificaation(context) {
+  showSnackBarForNotification(context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: const Text(
@@ -485,7 +485,7 @@ class CardItems extends StatelessWidget {
       isScrollControlled: true,
       elevation: 1.0,
       constraints: BoxConstraints.expand(
-          height: MediaQuery.of(context).size.height * 0.65),
+          height: MediaQuery.of(context).size.height * 0.8),
       context: context,
       builder: (context) {
         return Padding(
@@ -546,7 +546,109 @@ class CardItems extends StatelessWidget {
                   ),
                 ),
                 18.h,
-                const ReportChooseRadio()
+                const ReportChooseRadio(),
+                Expanded(
+                  child: GlobalButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      showBottomModalForReport(context);
+                    },
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    text: AppStrings.sendBtnText,
+                    textColor: AppColor.bgCard,
+                    color: AppColor.sendBtnColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+// section for the report modal result
+  void showBottomModalForReport(BuildContext context) {
+    showModalBottomSheet(
+      useSafeArea: true,
+      enableDrag: false,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(8.0)),
+      ),
+      barrierColor: Colors.grey.withOpacity(0.5),
+      isDismissible: false,
+      isScrollControlled: true,
+      elevation: 1.0,
+      constraints: BoxConstraints.expand(
+          height: MediaQuery.of(context).size.height * 0.5),
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 10.0),
+          child: Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(2.0),
+                topRight: Radius.circular(2.0),
+              ),
+            ),
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              children: [
+                Container(
+                  width: 36.0,
+                  height: 5.0,
+                  decoration: BoxDecoration(
+                    color: AppColor.indicatorColor,
+                    borderRadius: BorderRadius.circular(2.5),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        AppStrings.report,
+                        style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w500,
+                            color: AppColor.titleColor),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        width: 30.0,
+                        height: 30.0,
+                        decoration: const BoxDecoration(
+                            color: AppColor.grey, shape: BoxShape.circle),
+                        child: const Center(child: Icon(Icons.close)),
+                      ),
+                    ),
+                  ],
+                ),
+                69.h,
+                Image.asset(AppPath.reportResult),
+                27.h,
+                const Text(
+                  AppStrings.reportResultText,
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins",
+                  ),
+                ),
+                24.h,
+                GlobalButton(
+                  height: 48.0,
+                  width: MediaQuery.of(context).size.width,
+                  textColor: AppColor.titleColor,
+                  text: AppStrings.closeBtnText,
+                  onPressed: () => Navigator.pop(context),
+                ),
               ],
             ),
           ),

@@ -12,4 +12,6 @@ class AppColor {
   static const Color descColor = Color(0xff5E5E5E);
   static const Color indicatorColor = Color(0xff3d3d3d);
   static const Color titleColor = Color(0xff2B2B2B);
+  static const Color sendBtnColor = Colors.red;
+  static const Color borderColor = Color(0xffC4C4C4);
 }

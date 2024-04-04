@@ -13,11 +13,13 @@ class HomePageView extends StatefulWidget {
 class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.primaryColor,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-        child: CardItems(),
+    return const SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColor.primaryColor,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+          child: CardItems(),
+        ),
       ),
     );
   }

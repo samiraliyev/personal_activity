@@ -24,4 +24,5 @@ class AppPath {
   static const String muteNotification = "assets/images/mute.png";
   static const String report = "assets/images/report.png";
   static const String blockUser = "assets/images/blockUser.png";
+  static const String reportResult = "assets/images/report_result.png";
 }
