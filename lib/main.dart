@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Task test',
+      title: 'Flutter Task',
       theme: ThemeData(
         // colorScheme: ColorScheme.fromSeed(seedColor: AppColor.badgeColor),
         useMaterial3: true,
